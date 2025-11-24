@@ -1,0 +1,23 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+*.swp
+
+# Editor Directories
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Dependency Directories (if npm is used later)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build Output
+dist/
+build/
+
+# Misc
+.env
+.gemini/
+tmp/
