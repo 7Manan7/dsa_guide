@@ -76,5 +76,40 @@ const courseTopics = [
             <p><strong>Space Complexity:</strong> O(d) for the recursion stack.</p>
             <p>Backtracking is expensive! It's often used when N is small (e.g., N-Queens, Sudoku, Grid size < 20).</p>
         `
+    },
+    {
+        id: 7,
+        title: "Identifying Backtracking Problems",
+        content: `
+            <h4>Recursion or Backtracking?</h4>
+            <p>How do you know if a problem requires Backtracking?</p>
+            <ul>
+                <li><strong>Choices:</strong> You need to make a series of decisions (e.g., place a Queen here or there?).</li>
+                <li><strong>Constraints:</strong> Some decisions are invalid (e.g., Queens attacking each other).</li>
+                <li><strong>Goal:</strong> Find <em>all</em> solutions, or the <em>best</em> solution, or <em>any</em> valid solution.</li>
+                <li><strong>Small N:</strong> If N is small (e.g., <= 20), it's a hint that exponential time complexity is acceptable.</li>
+            </ul>
+        `
+    },
+    {
+        id: 8,
+        title: "Eliminating For Loops",
+        content: `
+            <h4>Recursion IS a Loop</h4>
+            <p>Sometimes we use a \`for\` loop inside recursion to iterate over choices (like directions).</p>
+            <p>However, you can also eliminate the loop by passing an index:</p>
+            <div class="code-block">
+                // With Loop
+                for(int i=0; i<n; i++) { recurse(i); }
+
+                // Without Loop
+                void recurse(int i) {
+                    if(i == n) return;
+                    // Do something with i
+                    recurse(i + 1);
+                }
+            </div>
+            <p>This is useful for subset/subsequence problems where you either "Pick" or "Don't Pick" the current element.</p>
+        `
     }
 ];

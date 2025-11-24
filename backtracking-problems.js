@@ -230,6 +230,139 @@ const btProblems = [
 }`,
         timeComplexity: 'O(4^(N*M))',
         spaceComplexity: 'O(N*M)'
+    },
+    {
+        id: 'q07',
+        number: 'Q-07',
+        title: 'N-Queens Problem',
+        difficulty: 'hard',
+        statement: 'Place N Queens on an NxN chessboard such that no two queens attack each other. (No two queens share the same row, column, or diagonal).',
+        approach: [
+            '<strong>Choice:</strong> Place a queen in the current row.',
+            '<strong>Constraint:</strong> Check if the column or diagonals are under attack.',
+            '<strong>Recurse:</strong> Move to the next row.',
+            '<strong>Backtrack:</strong> Remove the queen and try the next column.'
+        ],
+        code: `public void solveNQueens(boolean[][] board, int row) {
+    if (row == board.length) {
+        display(board);
+        System.out.println();
+        return;
+    }
+
+    for (int col = 0; col < board.length; col++) {
+        if (isSafe(board, row, col)) {
+            board[row][col] = true;
+            solveNQueens(board, row + 1);
+            board[row][col] = false; // Backtrack
+        }
+    }
+}
+
+private boolean isSafe(boolean[][] board, int row, int col) {
+    // Check vertical row
+    for (int i = 0; i < row; i++) {
+        if (board[i][col]) return false;
+    }
+
+    // Diagonal left
+    int maxLeft = Math.min(row, col);
+    for (int i = 1; i <= maxLeft; i++) {
+        if (board[row - i][col - i]) return false;
+    }
+
+    // Diagonal right
+    int maxRight = Math.min(row, board.length - col - 1);
+    for (int i = 1; i <= maxRight; i++) {
+        if (board[row - i][col + i]) return false;
+    }
+
+    return true;
+}`,
+        timeComplexity: 'O(N!)',
+        spaceComplexity: 'O(N^2)'
+    },
+    {
+        id: 'q08',
+        number: 'Q-08',
+        title: 'N-Knights Problem',
+        difficulty: 'hard',
+        statement: 'Place N Knights on an NxN board such that no two knights attack each other.',
+        approach: [
+            'Similar to N-Queens, but the attack pattern is different (L-shape).',
+            'We can iterate through all cells (row, col) and try to place a Knight.',
+            'If placed, move to place the next Knight.',
+            'Optimization: Pass (row, col) to avoid re-checking previous cells.'
+        ],
+        code: `public void knight(boolean[][] board, int row, int col, int knights) {
+    if (knights == 0) {
+        display(board);
+        System.out.println();
+        return;
+    }
+
+    if (row == board.length - 1 && col == board.length) {
+        return;
+    }
+
+    if (col == board.length) {
+        knight(board, row + 1, 0, knights);
+        return;
+    }
+
+    if (isSafe(board, row, col)) {
+        board[row][col] = true;
+        knight(board, row, col + 1, knights - 1);
+        board[row][col] = false;
+    }
+
+    knight(board, row, col + 1, knights);
+}`,
+        timeComplexity: 'O(2^(N*N))',
+        spaceComplexity: 'O(N^2)'
+    },
+    {
+        id: 'q09',
+        number: 'Q-09',
+        title: 'Sudoku Solver',
+        difficulty: 'hard',
+        statement: 'Write a program to solve a Sudoku puzzle by filling the empty cells.',
+        approach: [
+            'Find an empty cell (represented by 0 or \'.\').',
+            'Try digits 1-9.',
+            'Check if valid (Row, Col, 3x3 Subgrid).',
+            'If valid, place digit and recurse.',
+            'If recursion returns true, we found a solution.',
+            'If not, backtrack (reset cell to empty) and try next digit.'
+        ],
+        code: `public boolean solve(char[][] board) {
+    for (int i = 0; i < board.length; i++) {
+        for (int j = 0; j < board[0].length; j++) {
+            if (board[i][j] == '.') {
+                for (char c = '1'; c <= '9'; c++) {
+                    if (isValid(board, i, j, c)) {
+                        board[i][j] = c;
+                        if (solve(board)) return true;
+                        board[i][j] = '.'; // Backtrack
+                    }
+                }
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+private boolean isValid(char[][] board, int row, int col, char c) {
+    for (int i = 0; i < 9; i++) {
+        if (board[i][col] == c) return false;
+        if (board[row][i] == c) return false;
+        if (board[3 * (row / 3) + i / 3][3 * (col / 3) + i % 3] == c) return false;
+    }
+    return true;
+}`,
+        timeComplexity: 'O(9^M)',
+        spaceComplexity: 'O(M)'
     }
 ];
 
