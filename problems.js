@@ -461,6 +461,10 @@ function renderProblems() {
 
     // Add summary and tips sections
     addSummarySections();
+
+    if (window.Prism) {
+        Prism.highlightAll();
+    }
 }
 
 function escapeHtml(text) {

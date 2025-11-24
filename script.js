@@ -118,6 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalContent.innerHTML = topic.content;
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                if (window.Prism) {
+                    Prism.highlightAllUnder(modalContent);
+                }
             }
         });
     });
