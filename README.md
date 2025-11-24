@@ -22,10 +22,25 @@ Welcome to the **DSA Guide**, a comprehensive and interactive resource designed 
 *   Implementations using Arrays, Linked Lists, and Circular Buffers.
 *   **Key Problems** like Valid Parentheses, Histogram Area, and Queue using Stacks.
 
+### � Recursion
+*   Call Stack, Base Cases, and Recursive Patterns.
+*   Types: Tail, Head, and Tree Recursion.
+*   **5+ Problems** including Factorial, Fibonacci, Power(x,n), Tower of Hanoi, and Subsets.
+
+### 🔙 Backtracking
+*   Exploring all paths and pruning invalid branches.
+*   Maze problems with obstacles and all-direction movement.
+*   **9+ Problems** including N-Queens, N-Knights, Sudoku Solver, and Path Finding.
+
+### 🌳 Trees
+*   Binary Trees, Binary Search Trees, and Tree Properties.
+*   Traversals: Inorder, Preorder, Postorder, and Level Order (BFS).
+*   **6+ Problems** including Max Depth, Invert Tree, LCA, and Validate BST.
+
 ### 🚧 Coming Soon
-*   Recursion
-*   Backtracking
-*   Trees & Graphs
+*   Graphs & Advanced Tree Algorithms
+*   Dynamic Programming
+*   Greedy Algorithms
 
 ## 🚀 How to Run
 
